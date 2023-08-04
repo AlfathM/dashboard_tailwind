@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="//unpkg.com/alpinejs" defer></script>
+  <script>
+	tailwind.config = {
+		 theme: {
+			  extend: {
+					colors: {
+						 primary: "#0999A9",
+						 secondary : "#CEEBEE"
+					},
+			  },
+			  fontSize: {
+				sm: '0.8rem',
+				base: '1rem',
+				xl: '1.25rem',
+				'2xl': '1.563rem',
+				'3xl': '1.953rem',
+				'4xl': '2.441rem',
+				'5xl': '3.052rem',
+			 },
+		 },
+	};
+</script>
+  <style>
+	@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+	*{
+		font-family: 'Poppins', sans-serif;
+		box-sizing:border-box;
+		margin: 0;
+		padding: 0;
+		top: 0;
+		left: 0;
+		text-decoration: none;
+	}
+	
+ </style>
+</head>
+<body>
+	<div x-data="{ open: false }" class="relative flex">
+		<aside class="fixed bg-primary left-0 top-0 w-80 transition -translate-x-full shadow-md sm:translate-x-0 sm:relative z-10"  :class="{'-translate-x-full': !open}">
+				<div class="text-white flex items-center py-8 px-4 justify-between sm:justify-center">
+					<div class="flex items-center text-xl">
+						<i class="bx bx-coffee"></i>
+						Ngopi yuk!
+					</div>
+					<div x-on:click="open = ! open" class="flex item-center bg-slate-100 rounded-full p-2 mr-1 text-primary sm:hidden cursor-pointer">
+						<i class='bx bx-chevron-left'></i>
+					</div>
+				</div>
+				<div class="text-white h-screen flex flex-column p-4">
+					<div class="w-full">
+						<h2 class="font-bold">Dashboard</h2>
+						<ul>
+							<li class="p-2"><a href="/" class="block"><i class="bx bx-home"></i> Dashboard</a></li>
+							<li class="p-2"><a href="/" class="block"><i class="bx bx-user"></i> User</a></li>
+							<li class="p-2"><a href="/" class="block"><i class="bx bx-chart"></i> Sales</a></li>
+							<li class="p-2"><a href="/" class="block"><i class="bx bx-calendar"></i> Calendar</a></li>
+							<li class="bg-white text-primary p-2 mt-2 rounded-md"><a href="/" class="block"><i class='bx bx-message'></i> Form</a></li>
+						</ul>
+					</div>
+					
+				</div>
+
+		</aside>
+		<main class="w-full sm:relative">
+			<div class="bg-secondary flex justify-between items-center px-4 pt-8 py-4 shadow-md">
+				<div x-on:click="open = ! open" class="flex item-center bg-slate-100 rounded-full p-2 mr-1 cursor-pointer text-primary sm:hidden hover:bg-primary hover:text-white">
+					<i class="bx bx-menu"></i>
+				</div>
+				<div class="sm:hidden text-primary">
+					<i class="bx bx-coffee"></i>
+					Ngopi yuk!
+				</div>
+				<div class="relative hidden sm:block">
+					<div class="absolute p-2 text-cyan-500">
+					<i class="bx bx-search"></i>
+					</div>
+					<input type="text" placeholder="Search" class="rounded-md pl-6 py-2 border-2 w-60 border-cyan-500 text-sm focus:w-80 active:w-80 transition duration-600">
+				</div>
+				<div class="flex items-center relative" x-data="{ openUser: false }">
+					<span class="mr-2">Hi, Alfath
+					</span>
+					
+					<div class="flex text-primary item-center bg-white rounded-full p-2 mr-1 hover:bg-primary border-2 border-primary hover:text-white cursor-pointer" @click="openUser = true">
+						<i class="bx bx-user"></i>
+					</div>
+					<div class="absolute w-40 bg-white shadow-md -translate-x-12 translate-y-9 transition" x-show="openUser" @click.outside="openUser = false">
+						<ul>
+							<li class="hover:bg-primary p-2 hover:text-white"><a href="/" class="block"><i class="bx bx-cog"></i> Settings</a></li>
+							<li class="hover:bg-primary p-2 hover:text-white"><a href="./login.html" class="block"><i class="bx bx-exit"></i> Log Out</a></li>
+						</ul>
+					</div>
+				
+				</div>
+			</div>
+			<!-- content -->
+			<div class="p-6">
+				</div>
+			<!-- end of content -->
+		</main>
+	</div>
+	
+</body>
+
+</html>
